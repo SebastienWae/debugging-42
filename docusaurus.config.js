@@ -7,9 +7,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Debugging 42',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://sebastienwae.github.io/42-debugging',
-  baseUrl: '/',
+  url: 'https://sebastienwae.github.io',
+  baseUrl: '/42-debugging/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -42,14 +42,14 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Debugging@42',
+        title: 'Debugging 42',
         logo: {
-          alt: 'Dubuggers@42 logo',
+          alt: 'Dubuggers 42 logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            href: 'https://github.com/sebastienwae/debugging-42',
+            href: 'https://github.com/sebastienwae/42-debugging',
             label: 'GitHub',
             position: 'right',
           },
