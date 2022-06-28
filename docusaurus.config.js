@@ -27,7 +27,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/SebastienWae/debugging-42/main/',
+          editUrl: 'https://github.com/SebastienWae/debugging-42/tree/main/',
           sidebarCollapsed: false
         },
         blog: false,
