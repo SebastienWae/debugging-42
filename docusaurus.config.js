@@ -8,13 +8,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Debugging 42',
   url: 'https://sebastienwae.github.io',
-  baseUrl: '/42-debugging/',
+  baseUrl: '/debugging-42/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'sebastienwae',
-  projectName: '42-debugging',
+  projectName: 'debugging-42',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -27,7 +27,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/SebastienWae/42-debugging/main/',
+          editUrl: 'https://github.com/SebastienWae/debugging-42/main/',
           sidebarCollapsed: false
         },
         blog: false,
@@ -49,7 +49,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/sebastienwae/42-debugging',
+            href: 'https://github.com/sebastienwae/debugging-42',
             label: 'GitHub',
             position: 'right',
           },
