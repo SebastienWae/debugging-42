@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import * as AsciinemaPlayerLibrary from 'asciinema-player';
-import 'asciinema-player/dist/bundle/asciinema-player.css';
 
 type AsciinemaPlayerProps = {
 	src: string;
@@ -19,7 +18,9 @@ type AsciinemaPlayerProps = {
 	fontSize: string;
 };
 
-const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({ src, ...asciinemaOptions }) => {
+const Player: React.FC<AsciinemaPlayerProps> = ({ src, ...asciinemaOptions }) => {
+	const AsciinemaPlayerLibrary = require('asciinema-player');
+	require('asciinema-player/dist/bundle/asciinema-player.css');
 	const ref = useRef<HTMLDivElement>(null);
 
 	src = useBaseUrl(src);
@@ -29,6 +30,14 @@ const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({ src, ...asciinemaOpti
 	}, [src]);
 
 	return <div ref={ref} />;
+};
+
+const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({ src, ...asciinemaOptions }) => {
+	return (
+		<BrowserOnly>
+			{() => { return <Player src={src} {...asciinemaOptions} />; }}
+		</BrowserOnly>
+	);
 };
 
 export default AsciinemaPlayer;
