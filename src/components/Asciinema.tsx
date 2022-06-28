@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import * as AsciinemaPlayerLibrary from 'asciinema-player';
+import 'asciinema-player/dist/bundle/asciinema-player.css';
 
 type AsciinemaPlayerProps = {
 	src: string;
@@ -20,6 +22,7 @@ type AsciinemaPlayerProps = {
 const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({ src, ...asciinemaOptions }) => {
 	const ref = useRef<HTMLDivElement>(null);
 
+	src = useBaseUrl(src);
 	useEffect(() => {
 		const currentRef = ref.current;
 		AsciinemaPlayerLibrary.create( src, currentRef, asciinemaOptions);

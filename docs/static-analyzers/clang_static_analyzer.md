@@ -71,8 +71,8 @@ scan-build: Analysis run complete.
 scan-build: 1 bug found.
 scan-build: Run 'scan-view /tmp/scan-build-2022-06-19-123309-28897-1' to examine bug reports.
 ```
-<iframe style={{width: '100%', height: '595px'}} src="/reports/scan-build.html" />
 
+<Iframe url="/reports/scan-build.html" />
 
 ## CodeChecker
 
@@ -194,7 +194,7 @@ You can also make it create HTML files for better readability.
 $ CodeChecker parse --export html --output ./reports_html ./reports
 ```
 
-<iframe style={{width: '100%', height: '595px'}} src="/reports/codechecker/index.html" />
+<Iframe url="/reports/codechecker/index.html" />
 
 Other output formats are available, as well as the possibility to save the reports in DB but we will not cover them here.
 
