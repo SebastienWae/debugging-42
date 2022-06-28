@@ -44,7 +44,7 @@ const config = {
       navbar: {
         title: 'Debugging 42',
         logo: {
-          alt: 'Dubuggers 42 logo',
+          alt: 'Debugging 42 logo',
           src: 'img/logo.svg',
         },
         items: [
