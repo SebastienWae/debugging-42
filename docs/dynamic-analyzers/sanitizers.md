@@ -62,7 +62,7 @@ You can find the list of all checks in the [documentation](https://clang.llvm.or
 
 You can enable it with the `-fsanitize=undefined` flag.
 
-It is also the only sanitizer that can be used with other sanitizers. You can do it by separating them with a comma `-fsanitize=address,undefined`.
+It is the only sanitizer that can be used with other sanitizers. You can do it by separating them with a comma `-fsanitize=address,undefined`.
 
 ### Example
 

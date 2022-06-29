@@ -4,17 +4,20 @@ sidebar_position: 1
 
 # LLDB
 
-LLDB is a debugger that allows you to monitor and change a program as it is running. For example, it allows you to pause a process when a condition is reached, execute a function step by step or even change the value of a variable at runtime.
+[LLDB](https://lldb.llvm.org/) is a debugger that allows you to monitor and change a program as it is running. For example, it allows you to pause a process when a condition is reached, execute a function step by step or even change the value of a variable at runtime.
 
-It is a tool with a lot of depth. We will only cover the basis needed to get you started. Checkout the [resources](/debuggers/lldb#resources) if you want to dive deeper.
+You can use it for a wild variety of tasks. It even has an API for the more complex use case. We will, however, only cover the basis needed to get you started. Checkout the [resources](/debuggers/lldb#resources) if you want to dive deeper.
 
 ## Starting LLDB
 
-LLDB works by targeting a specific process. It can connect to an existing process, but you will not have the required wrights to do so on 42’s macOS. The other way is to make LLDB start the process itself. You can define it when you launch the `lldb` command, and with the `target create` command once you are in the console.
+LLDB works by targeting a specific process. Usually, it is done by connecting to an existing one, but you do not have the required rights to do so on 42’s computers.
+
+The other way is to make LLDB start the process itself. You can define the program to launch when starting the `lldb` command or with the `target create` command once you are in the console.
 
 ```shell
 $ lldb my_program
 # or
+$ lldb
 (lldb) target create my_program
 ```
 
@@ -34,6 +37,7 @@ Passing arguments to your program if often required, you can do it by adding `--
 
 ```shell
 $ lldb -- my_program arg1 arg2
+# or
 (lldb) process launch -- my_program arg1 arg2
 ```
 
@@ -87,7 +91,7 @@ Command Options Usage:
 
 ### Suggestions
 
-Like ZSH or Bash, LLDB has a suggestion system available with the `TAB` key, if you want to know which commands, options or arguments is available at anytime, press the `TAB` key and it will show you multiples suggestions or it will automatically complete what you typed if it is the only option.
+Like ZSH or Bash, LLDB has a suggestion system available with the `TAB` key. If you want to know which commands, options or arguments is available at anytime, press the `TAB` key and it will show you multiples suggestions or it will automatically complete what you typed if it is the only option.
 
 ```shell
 (lldb) process con
@@ -123,12 +127,14 @@ You can use the `frame variable` or `v` command to inspect the variables in the 
 (size_t) len = 11
 ```
 
-Simple operations like &, *, ->, [] can used to access the variables.
+Simple operations like &, *, ->, [] can be used to access the variables values.
 
 ```shell
 (lldb) frame variable str[3]
 (char) str[3] = 'l'
 ```
+
+You can access global variables with the `--show-globals` flag.
 
 The  `--format` option can change how the values are displayed.
 
@@ -145,7 +151,7 @@ The list of all the formats can be found with the `help format` command.
 
 ### Expressions
 
-Expressions, that can be used with the `expressions` or `e` command, allows you to execute arbitrary code in the current stack frame of the process. You can change the value of any variable, create new ones, call functions, etc. without re-compiling or restarting the program.
+You can use expressions with the `expressions` or `e` commands. They allow you to execute arbitrary code in the current stack frame of the process. You can change the value of any variable, create new ones, call functions, etc. without re-compiling or restarting the program.
 
 The value returned by an expression is stored in a variable, in the format `$n` and can be reused.
 
@@ -196,7 +202,7 @@ If you are stuck in a loop or if you want to stop the program right away, you ca
 
 Breakpoints can be added to various types of targets, such as functions, lines of code, regex.
 
-We can find the list of all the options with the `help breakpoint set` command, but the most common ones are:
+You can find the list of all the options with the `help breakpoint set` command, but the most common ones are:
 
 ```shell
 # Set a breakpoint in file main.c at line 20 and column 10
@@ -238,7 +244,6 @@ int main(void) {
 
 The other way is through the uses of [expressions](/debuggers/lldb#expressions) and the `--condition` option.
 
-
 ```shell
 # The breakpoint will be triggered when i == 2
 (lldb) breakpoint set --line 4 --condition 'i + 5 == 7'
@@ -246,13 +251,11 @@ The other way is through the uses of [expressions](/debuggers/lldb#expressions) 
 (lldb) breakpoint set --name main --condition 'strcmp(argv[1], "hello") == 0'
 ```
 
-Both count and condition can be combined, but the condition will be evaluated first.
-
 ### Watchpoints
 
-Watchpoints are a special breakpoint that will trigger when the value of a variable or an address is read or changed.
+Watchpoints are a special breakpoint that will trigger when the value of a variable or an address is changed or read.
 
-You create them with the `watchpoint set` command, but instead of defining a line or function; you define a variable or address.
+You create them with the `watchpoint set` command. Instead of defining a line or function, you define a variable or an address.
 
 `watchpoint set variable` takes the name of a variable in the current frame, and `watchpoint set expression` takes an [expression](/debuggers/lldb#expressions) used to evaluate the address.
 
@@ -339,7 +342,7 @@ Once you have stopped the process, you can control it with the `thread` commands
 - `thread step-over` or `n` will go to the next instruction, but will not step into functions.
 - `thread continue` or `c` will continue the process until the next breakpoint or the end of the program.
 
-Pressing the `Return` key in LLDB with no command will re-execute the last command you used.
+Pressing the `Return` key with no command will re-execute the last command you used.
 
 If at any point you want to see where you are in the program, you can use the `process status` command.
 
@@ -359,7 +362,7 @@ Process 11582 stopped
 
 ### Call stack
 
-On top of being able to control the process, LLDB also allows you to see the call stack.
+On top of being able to control the process, LLDB also allows you to see and move inside the call stack.
 
 The `thread backtrace` command will show you the current call stack.
 
@@ -392,7 +395,7 @@ The `up` and `down` commands will also move the call stack up and down.
 
 LLDB has GUI mode, it is not the most pleasant way to interact with it but it can be useful if you struggle with using the default console.
 
-You can enable it by typing the `gui` command on the LLDB console. You can then press ‘h’ to bring the help menu or `esc` to go back to the console.
+You can enable it by typing the `gui` command on the LLDB console. Press `h` to bring up the help menu or `Escape` to go back to the console.
 
 ```shell
 (lldb) gui

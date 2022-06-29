@@ -23,7 +23,7 @@ It can find issues such as:
 - Source leaks
 - Uninitialized value
 
-More features can be toggled on, like a taint mode to track untrusted variable, or off to reduce the compilation time increase or hide false positive. (for a list of all options, refer to the [GCC manual](https://gcc.gnu.org/onlinedocs/gcc/Static-Analyzer-Options.html)) 
+More features can be toggled o or off to reduce the compilation time increase or hide false positive, like a taint mode to track untrusted variables. For a list of all options, refer to the [GCC manual](https://gcc.gnu.org/onlinedocs/gcc/Static-Analyzer-Options.html).
 
 On average, your compilation time will increase by 2x.
 

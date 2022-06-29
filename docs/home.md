@@ -26,7 +26,9 @@ Before continuing, here are some preliminary steps you should do to set up your 
 
 [Homebrew](https://brew.sh) is a [package manager](https://en.wikipedia.org/wiki/Package_manager), you will use it to install, manage and update software on your machine.
 
-Since we do not have the admin right and the spaces is limited I suggest you to use this script to install it in your goinfre: https://github.com/omimouni/42homebrew
+Since you do not have the admin rights on 42's computers and the disk space is limited I suggest you to use this script to install it in the goinfre of the machine you are using.
+
+https://github.com/omimouni/42homebrew
 
 ```shell
 $ curl -fsSL https://raw.githubusercontent.com/omimouni/42homebrew/master/install-goinfre.sh | zsh
@@ -34,25 +36,25 @@ $ curl -fsSL https://raw.githubusercontent.com/omimouni/42homebrew/master/instal
 
 ### LLVM
 
-[LLVM](https://llvm.org/) is an open source compiler and toolchain that include Clang. By default, macOS ship with an old version of it, you can use Homebrew to install the latest version, this will give you access to better tooling, performance and error handling.
+[LLVM](https://llvm.org/) is an open source compiler and toolchain that include [Clang](https://clang.llvm.org/). By default, macOS ship with an old version of it, you can use Homebrew to install the latest version, this will give you access to better tooling, performance and error handling.
 
 ```shell
 $ brew install LLVM
 ```
 
-To be able to use it you will have to update your `PATH` variable, in you `.zshrc` add the following line:
+To be able to use it you will have to update the `PATH` variable. In your `.zshrc` add the following line:
 
 ```shell
 export PATH=~/goinfre/.brew/opt/llvm/bin:$PATH
 ```
 
-Now when you type `clang` on your terminal you will use the latest version, but you can still use `cc` to access the default version (required for your projects).
+When you type `clang` in your terminal you will use the latest version, the one you just installed. You can still use `cc` to access the default version (required for your projects).
 
 ## Debug information
 
-To have more accurate information with the tools, you must generate the debug information while compiling your program.
+To have more accurate information with the tools, you must generate the [debug information](https://llvm.org/docs/SourceLevelDebugging.html) while compiling your program.
 
-To do that, you must add the `-g` flag when compiling.
+To do that, add the `-g` flag when compiling.
 
 This will add the debug information to the output file or in a `.dSYM` file for macOS.
 

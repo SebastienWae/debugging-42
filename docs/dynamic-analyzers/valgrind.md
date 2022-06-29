@@ -4,17 +4,17 @@ sidebar_position: 2
 
 # Valgrind
 
-Even though Valgrind is mostly used to find memory leaks, it can do a lot more. It is a made of multiple tools[^1] that can help you find various types of errors in your code.
+Even though [Valgrind](https://valgrind.org/) is mostly used to find memory leaks, it can do a lot more. It is a made of multiple tools that can help you find various types of errors in your code.
 
 It works by running your program on a synthetic CPU and dynamically re-compiling it. You do not need to change or re-compile your program to make it compatible, but it comes at the cost of slowing its execution by a factor or 5 to 100.
 
 ## macOS
 
-Valgrind is currently [only supporting macOS up to High Sierra](https://valgrind.org/docs/manual/dist.news.html) (10.12). Fortunately there is a fork that works with macOS Catalina (10.15).
+Valgrind is currently [only supporting macOS up to High Sierra](https://valgrind.org/docs/manual/dist.news.html) (10.12). Thankfully there is a fork that works with macOS Catalina (10.15).
 
 https://github.com/LouisBrunner/valgrind-macos
 
-To install it, the easiest way is through Homebrew:
+The easiest way to install it is through Homebrew:
 
 ```shell
 $ brew tap LouisBrunner/valgrind
@@ -30,7 +30,7 @@ MemCheck is Valgrind default tool. It’s often only used to check memory leaks,
 - Use-after-free
 - Using undefined values
 
-To not miss any leak or error and get more information is I suggest you to always run MemCheck with the flags:
+To not miss any leak or error and get more information, I suggest you to always run MemCheck with the flags:
 ```shell
 --leak-check=full --show-leak-kinds=all -s
 ```

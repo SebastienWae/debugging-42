@@ -8,15 +8,15 @@ sidebar_position: 1
 Static analyzer are not magic, they will not catch all errors and can report false positives.
 :::
 
-Clang Static Analyzer can help you find issues such as:
+[Clang Static Analyzer](https://clang-analyzer.llvm.org/) can help you find issues such as:
 - Uninitialized arguments
 - Division by zero
 - Null function pointer
 - Dereferences of null pointers
 
-On top of the default checker, you can also toggle some experimental checkers that can help find your more bugs. (for a list of all options refer to the Clang manual)
+On top of the default checker, you can also toggle some experimental checkers that can help find your more bugs. For a list of all options refer to the [Clang manual](https://clang.llvm.org/docs/analyzer/checkers.html).
 
-You can use Clang static analyzer directly through Clang flags system, but the more ergonomic way is through tools such as Scan-Build or CodeChecker.
+You can use Clang static analyzer directly through Clang, but the more ergonomic way is with tools such as [Scan-Build](https://clang-analyzer.llvm.org/scan-build.html) or [CodeChecker](https://codechecker.readthedocs.io/en/latest/).
 
 ## Scan-Build
 
@@ -82,7 +82,7 @@ It’s a very complex tool, so we will only cover the basis. For more informatio
 
 ### Instalation
 
-On 42's macOS, the easiest way to install CodeChecker is through pip:
+On 42's computers, the easiest way to install CodeChecker is with `pip`:
 
 ```shell
 $ pip3 install --user codechecker
@@ -96,24 +96,24 @@ Before being able to use CodeChecker you need to create a compilation database. 
 
 Build tools like CMake can auto-generate it, but for Makefiles you will need an extra utility.
 
-Even though CodeChecker can build it on its own with the following command:
-
-```shell
-$ CodeChecker log --build "make" --output ./compile_commands.json
-```
-
-It can output inaccurate results, so I recommend using [Bear](https://github.com/rizsotto/Bear), that can be installed with [Homebrew](https://brew.sh) and is very easy to use.
+I recommend using [Bear](https://github.com/rizsotto/Bear). It can be installed with Homebrew and is very easy to use.
 
 ```shell
 $ brew install bear
 $ bear -- make
 ```
 
+CodeChecker has a built-in tool to do it too, but it can output inaccurate results.
+
+```shell
+$ CodeChecker log --build "make" --output ./compile_commands.json
+```
+
 ### Analyze
 
 CodeChecker offers a lot of customization regarding the analyses available. We won’t go in details into them here but they have a very detailed [documentation](https://codechecker.readthedocs.io) if you are interested.
 
-Once your compilation database is ready, and every time you want to check your code, you will have to analyze it.
+Once your compilation database is ready, and every time you want to check your code, you will have to analyze it first.
 
 ```shell
 $ CodeChecker analyze --ctu ./compile_commands.json --output ./reports
@@ -196,7 +196,7 @@ $ CodeChecker parse --export html --output ./reports_html ./reports
 
 <Iframe url="/reports/codechecker/index.html" />
 
-Other output formats are available, as well as the possibility to save the reports in DB but we will not cover them here.
+Other output formats are available, as well as the possibility to save the reports in a database but we will not cover them here.
 
 ### Visual Studio Code
 
