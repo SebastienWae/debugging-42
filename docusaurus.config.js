@@ -8,6 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Debugging 42',
   url: 'https://sebastienwae.github.io',
+  tagline: 'Debugging resources for 42',
   baseUrl: '/debugging-42/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
