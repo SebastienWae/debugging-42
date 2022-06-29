@@ -1,6 +1,7 @@
 ---
 slug: /
 sidebar_position: 1
+description: Debugging resources for 42
 ---
 
 # Home

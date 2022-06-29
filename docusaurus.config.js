@@ -42,6 +42,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: 'img/logo.png',
       navbar: {
         title: 'Debugging 42',
         logo: {
@@ -55,6 +56,10 @@ const config = {
             position: 'right',
           },
         ],
+      },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
       },
       announcementBar: {
         id: 'work_in_progress',
